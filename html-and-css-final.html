@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Registration Page</title> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Poppins", sans-serif;
+            }
+    
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: url('1.jpg') no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+    
+            form{
+                width: 50%;
+                background: transparent;
+                border: 2px solid rgba(255, 255, 255, .2);
+                backdrop-filter: blur(20px);
+                box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+                color: #fff;
+                border-radius: 10px;
+                padding: 30px 40px;
+            }
+    
+            h2{
+                font-size: 36px;
+                text-align: center;
+                margin-bottom: 20px; 
+            }
+    
+            label{
+                font-size: 16px; 
+                margin-bottom: 10px; 
+                display: block; 
+            }
+    
+            input[type="text"],
+            input[type="email"],
+            input[type="password"],
+            select,
+            input[type="date"]{
+                width: calc(100% - 22px);
+                height: 50px;
+                background: transparent;
+                border: none;
+                outline: none;
+                border: 2px solid rgba(255, 255, 255, .2);
+                border-radius: 40px;
+                font-size: 16px;
+                color: #fff;
+                padding: 20px 45px 20px 20px;
+                margin-bottom: 20px; 
+            }
+    
+            input[type="date"] {
+                height: 50px; 
+            }
+    
+            input::placeholder {
+                color: #fff; 
+            }
+    
+    
+            .submit{
+                width: 95%;
+                height: 45px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #667eea;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 20px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px 0 rgba(44, 80, 180, 0.75);
+        }
+
+        .submit {
+            background-image: linear-gradient(to right, #667eea, #4b70d4, #6B8DD6, #3f62d4);
+            box-shadow: 0 4px 15px 0 rgba(54, 109, 180, 0.75);
+        }
+        </style>
+
+<form method="post" action="php-final.php">
+    <h2>
+        Registration Form
+    </h2>
+    <label for="user_name">Username:</label>
+    <input type="text" name="user_name" required><br>
+
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name" required><br>
+
+    <label for="middle_name">Middle Name:</label>
+    <input type="text" name="middle_name" required><br>
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name" required><br>
+
+    <label for="gender">Gender:</label>
+    <select name="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    <br>
+    <label for="birthdate">Birthdate:</label>
+    <input type="date" id="birthdate" name="birthdate"  onchange="calculateAge()"required>
+    <br>
+    <label for="age">age:</label>
+    <input type="text" id="age" name="age" readonly>
+
+    <label for="email_address">Email Address:</label>
+    <input type="email" name="email_address" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" required><br>
+
+    <label for="confirm_password">Confirm Password:</label>
+    <input type="password" name="confirm_password" required><br>
+
+    <button class="submit">Register!</button>
+</form>
+
+<script>
+    function calculateAge() {
+        var today = new Date();
+        var birthDate = new Date(document.getElementById("birthdate").value);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var monthDiff = today.getMonth() - birthDate.getMonth();
+        
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        
+        document.getElementById("age").value = age;
+    }
+    
+</script>
+
+</body>
+</html>
